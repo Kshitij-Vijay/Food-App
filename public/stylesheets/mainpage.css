@@ -1,0 +1,28 @@
+:root {
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-container {
+  display: grid;
+  min-height: fit-content;
+  min-width: 80vw;
+  border: 2px solid salmon;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 30px;
+}
+
+/* .invisible-contorl-buttons {
+  display: none;
+} */
+
+#addbut:hover .add-buttons {
+  background-color: aquamarine;
+}
+
+#addbut:active .invisible-contorl-buttons {
+  display: block;
+}

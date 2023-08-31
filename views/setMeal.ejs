@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SET MEALS</title>
+  </head>
+  <body>
+    <form action="/set/meal" method="post">
+      <h1>SET YOUR MEALS</h1>
+      <p class="ques">Choose the date and time</p>
+      <input type="datetime" name="date" id="set-i-date" />
+
+      <p class="ques">Choose meal time :</p>
+      <input type="radio" value="breakfast" name="meal" />
+      <label for="breakfast">BREAKFAST</label>
+
+      <input type="radio" value="lunch" name="meal" />
+      <label for="lunch">LUNCH</label>
+
+      <input type="radio" value="snacks" name="meal" />
+      <label for="snacks">SNACKS</label>
+
+      <input type="radio" value="dinner" name="meal" />
+      <label for="dinner">DINNER</label>
+
+      <div class="food-container">
+
+
+        <hr>
+
+        <p>Select from this list : </p>        
+
+        <% let d = data[0]; %>
+        <% for(var i=0;i<data[0].length;i++) { %>
+
+            <input type="radio" name="food" value="<%=d[i] %>">
+            <label for="<%= d[i] %>"><%=d[i] %></label>
+
+        <% } %>
+      </div>
+
+      <hr>
+
+      <button type="submit" id="submit-button">SUBMIT</button>
+      <hr>
+    </form>
+
+    <form action="/set/filter" method="post">
+
+        
+        <% let ty = data[2]; %>
+        <% for(var i=0;i<ty.length;i++) { %>
+
+            <input type="checkbox" name="type" value="<%= ty[i] %>">   
+            <label for="<%= ty[i] %>"><%=ty[i] %></label>
+            
+            <% } %>
+
+            <hr>
+
+        <% let ta = data[3]; %>
+        <% for(var i=0;i<ta.length;i++) { %>
+
+            <input type="checkbox" name="taste" value="<%= ta[i] %>">   
+            <label for="<%= ta[i] %>"><%=ta[i] %></label>
+
+        <% } %>
+
+        <hr/>
+
+        <button type="submit" id="filter-button">FILTER</button>
+        <hr>
+    </form>
+
+    <form action="/FoodApp" method="get">
+        <button type="submit" id="back-button">BACK</button>
+    </form>
+
+
+    <script>
+
+    </script>
+  </body>
+</html>

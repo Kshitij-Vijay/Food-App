@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/inglib.css">
+    <title>INGREDIENT LIBRARY</title>
+  </head>
+  <body>
+    INGREDIENT LIBREARY CLICK TO EDIT
+
+    <form action="/lib/food" method="get">
+      <button id="back-button">BACK</button>
+    </form>
+
+    <div class="ing-container">
+      <div class="ing-ele">
+        <div class="ind-ind ing-sub-ele">
+          <span> INDEX </span>
+        </div>
+        <div class="ing-name ing-sub-ele">
+          <span> INGREDIENT </span>
+        </div>
+        <div class="ing-type ing-sub-ele">
+          <span> TYPE </span>
+        </div>
+        <div class="ing-cost ing-sub-ele">
+          <span> COST </span>
+        </div>
+      </div>
+        <% for(var i=0;i<data.length;i++) { %>
+            <div class="ing-ele">
+                <div class="ind-ind ing-sub-ele">
+                  <span><%=  (i+1) %></span>
+                </div>
+                <div class="ing-name ing-sub-ele">
+                  <span> <a href=""><%= data[i].ingredient  %></a> </span>
+                </div>
+                <div class="ing-type ing-sub-ele">
+                  <span> <%= data[i].type  %></span>
+                </div>
+                <div class="ing-cost ing-sub-ele">
+                  <span> <%= data[i].cost  %> </span>
+                </div>
+              </div>
+        <% } %>
+    </div>
+  </body>
+</html>

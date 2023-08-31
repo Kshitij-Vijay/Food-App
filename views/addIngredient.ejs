@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADD INGREDIENT</title>
+  </head>
+  <body>
+    <form action="/add/ingredient" method="post">
+      <p class="label-q">Name :</p>
+      <input name="Name" class="input-i" id="input-name" type="text" />
+      <p class="warn">Name must not be empty</p>
+
+      <p class="label-q">Cost :</p>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="VE"
+      />
+      <label for="VE">Vegetbales</label>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="FR"
+      />
+      <label for="FR">Fruits</label>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="ME"
+      />
+      <label for="ME">Meat</label>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="BO"
+      />
+      <label for="BO">Bootled</label>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="PI"
+      />
+      <label for="PI">Pickles</label>
+
+      <input
+        name="Type"
+        class="input-i"
+        id="input-type"
+        type="radio"
+        value="PA"
+      />
+      <label for="PA">Packaged</label>
+
+      <p class="label-q">Cost :</p>
+      <input name="Cost" class="input-i" id="input-cost" type="number" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <form action="/FoodApp" method="get">
+      <button id="Backbutton">BACK</button>
+    </form>
+
+    <script src="/javascript/addFood.js"></script>
+    <script src="/javascript/replies_backcode.js">
+      check(backcode);
+    </script>
+  </body>
+</html>

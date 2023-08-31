@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/mainpage.css" />
+    <title>FOOD APP</title>
+  </head>
+  <body>
+    <div class="tasks-container"></div>
+    <hr />
+    <div class="story-container">Display Image</div>
+    <hr />
+    <div class="schedule-container">
+      <div>Date</div>
+      <div>Event</div>
+      <div>Meal</div>
+      <% let obj1 = data[0] %>
+      <% for(var i=0;i<obj1.length;i++)  { %>
+        <div><%= obj1[i].date %></div>
+        <div><%= obj1[i].meal %></div>
+        <div><%= obj1[i].name %></div>
+      <%}%>
+    </div>
+    <hr />
+    <div class="controls-container">
+      <button class="control-buttons" id="profilebut">PROFILE</button>
+      <button class="control-buttons" id="addbut" type="button">ADD</button>
+      <div class="invisible-contorl-buttons">
+        <form action="/add/food" method="get">
+          <button class="add-buttons" id="add-food" type="submit">+FOOD</button>
+        </form>
+        <form action="/add/ingredient" method="get">
+          <button class="add-buttons" id="add-ingredient" type="submit">+INGREDIENT</button>
+        </form>
+      </div>
+      <form action="/set/meal" method="get">        
+        <button class="control-buttons" id="setbut" type="submit">SET</button>
+      </form>
+      <button class="control-buttons" id="searchbut">SEARCH</button>
+      <form action="/lib/food" method="get">
+        <button class="control-buttons" id="libbut" type="submit">LIB</button>
+      </form>
+      <button class="control-buttons" id="settingsbut">SETTINGS</button>
+    </div>
+  </body>
+</html>

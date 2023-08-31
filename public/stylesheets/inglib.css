@@ -1,0 +1,31 @@
+:root {
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.ing-container {
+  width: 100vw;
+  min-height: 30px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.ing-ele {
+  display: grid;
+  width: 100%;
+  min-height: 30px;
+  max-height: 35px;
+  grid-template-columns: 1fr 7fr 2fr 2fr;
+}
+
+.ing-sub-ele {
+  margin: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: blanchedalmond;
+  text-align: center;
+}

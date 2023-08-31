@@ -1,0 +1,58 @@
+:root {
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+  max-height: fit-content;
+  min-width: 90vw;
+  max-width: 96vw;
+}
+
+.food-ele {
+  display: grid;
+  flex-direction: row;
+  height: 30px;
+  width: 100%;
+  grid-template-columns: 1fr 7fr 3fr 3fr 1fr 2fr 3fr;
+}
+
+.food-sub-ele {
+  margin: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+  background-color: blanchedalmond;
+  text-align: center;
+}
+
+.food-name {
+  text-align: left;
+  padding-left: 6px;
+}
+/* 
+
+.food-type {
+  flex-grow: 2;
+}
+
+.food-taste {
+  flex-grow: 2;
+}
+
+.food-reps {
+  flex-grow: 1;
+}
+
+.food-ratings {
+  flex-grow: 2;
+}
+
+.food-difficulty {
+  flex-grow: 2;
+} */

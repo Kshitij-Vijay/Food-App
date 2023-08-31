@@ -1,0 +1,86 @@
+--------- FOOD TABLE ------------------
+
+drop table if exists foods;
+
+create table foods ( 
+	id int(6) not null,
+	name varchar(40) not null,
+	type varchar(20),
+	taste varchar(20),
+	ratings int(2),
+	comments varchar(100),
+	process varchar(120),
+	reps int default 0,
+	preptime time,
+	difficulty set("Easy","Medium","Hard"),
+	primary key (id)
+);
+
+// id name unique ; id auto increament
+
+----------- INGREDIENTS TABLE -----------------
+
+drop table if exists ingredients;
+
+create table ingredients ( 
+	ingid int(6) not null,
+	ingredient varchar(30) not null,
+	type varchar(20) not null,
+	cost int(4) default 0,
+	primary key (ingid,type)
+);
+
+// ingid unique and auto increament
+
+-------------  PROCESS TABLE -------------------
+
+drop table if exists process;
+
+create table process (
+	id int(6) not null,
+	ingid int(6) not null,
+	number int(3) not null default 0,
+	work varchar(100),
+	primary key (id,ingid)
+);
+
+
+---------- HISTORY TABLE -------------------
+
+drop table if exists history;
+
+create table history (
+	date datetime not null,
+	meal varchar(10) not null,
+	id int(6) not null,
+	review varchar(100),
+	success enum("YES","NO","ALMOST","GAVE UP"),
+	satisfaction int(2),
+	primary key (date,meal)
+);
+
+
+------------ FUTURE TABLE -------------------
+
+drop table if exists future;
+
+create table future (
+	date datetime not null,
+	meal varchar(10) not null,
+	id int(6) not null,
+	primary key (date,meal)
+);
+
+
+------------  LINK TABLE ---------------------
+
+drop table if exists links;
+
+create table links (
+	linkid int(5),
+	linktype varchar(2),
+	linkname varchar(60),
+	linkdata varchar(100),
+	primary key (linkid)
+);
+	

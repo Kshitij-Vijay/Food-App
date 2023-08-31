@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/foodlib.css" />
+    <title>FOOD LIBRARY</title>
+  </head>
+  <body>
+    <p>
+        ALL FOODS IN COLLECTION Click to edit
+    </p>
+
+    <form action="/FoodApp" method="get">
+      <button id="back-button" type="submit">BACK</button>
+    </form>
+
+
+    <form action="/lib/ing" method="get">
+        <button id="to-ing-lib" type="submit">INGREDIENT LIBRARY</button>
+    </form>
+
+    <div class="items-container">
+      <div class="food-ele head-ele">
+        <div class="food-index food-sub-ele">
+            <span>
+                IND
+            </span>
+        </div>
+        <div class="food-name food-sub-ele">
+            <span>
+                NAME
+            </span>
+        </div>
+        <div class="food-type food-sub-ele">
+            <span>
+                TYPE
+            </span>
+        </div>
+        <div class="food-taste food-sub-ele">
+            <span>
+                TASTE
+            </span>
+        </div>
+        <div class="food-reps food-sub-ele">
+            <span>
+                REPS
+            </span>
+        </div>
+        <div class="food-ratings food-sub-ele">
+            <span>
+                RATINGS
+            </span>
+        </div>
+        <div class="food-difficulty food-sub-ele">
+            <span>
+                DIFFICULTY
+            </span>
+        </div>
+    </div>
+      <% for(var i=0;i<data.length;i++) { %>
+        <div class="food-ele head-ele">
+            <div class="food-index food-sub-ele">
+                <span>
+                    <%= (i+1) %>
+                </span>
+            </div>
+            <div class="food-name food-sub-ele">
+                <span>
+                    <a href=""><%= data[i].name %></a>
+                </span>
+            </div>
+            <div class="food-type food-sub-ele">
+                <span>
+                    <a href=""><%= data[i].type %></a>
+                </span>
+            </div>
+            <div class="food-taste food-sub-ele">
+                <span>
+                    <%= data[i].taste %>
+                </span>
+            </div>
+            <div class="food-reps food-sub-ele">
+                <span>
+                    <%= data[i].reps %>
+                </span>
+            </div>
+            <div class="food-ratings food-sub-ele">
+                <span>
+                    <%= data[i].ratings %>
+                </span>
+            </div>
+            <div class="food-difficulty food-sub-ele">
+                <span>
+                    <%= data[i].difficulty %>
+                </span>
+            </div>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>
