@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=data.ingredient%></title>
+    <link rel="stylesheet" href="/stylesheets/ingredient.css">
+</head>
+<body>
+
+    <form action="/lib/ing" method="get">
+        <button type="submit" id="back-button">BACK</button>
+    </form>
+
+    <form action="/ing/edit">
+        <button type="submit" id="edit-button">EDIT</button>
+    </form>
+
+    <p class="he">Name : </p>
+    <p class="info"><%=data.ingredient%></p>
+
+    <p class="he">Cost : </p>
+    <p class="info"><%=data.cost%></p>
+
+    <p class="he">Type : </p>
+    <p class="info"><%=data.type%></p>
+
+    <p class="he">Links : </p>
+
+    <div class="links-container">
+        <% for(var i=0;i<data.linkval.length;i++) { %>
+        <div class="link-ele">
+            <p class="link-index link-sub-ele "><%=i+1%></p>
+            <p class="link-name link-sub-ele "><%= data.linkname[i] %></p>
+            <a href="<%= data.linkval[i] %>" class="link-val link-sub-ele "><%= data.linkval[i] %></a>
+        </div>
+        <%}%>
+    </div>
+</body>
+</html>

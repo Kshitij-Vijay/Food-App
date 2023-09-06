@@ -67,7 +67,7 @@
             </div>
             <div class="food-name food-sub-ele">
                 <span>
-                    <a href=""><%= data[i].name %></a>
+                    <a href="/food" class="foodnames" id="<%=data[i].name%>"  onclick="foodclick(event)"><%= data[i].name %></a>
                 </span>
             </div>
             <div class="food-type food-sub-ele">
@@ -98,5 +98,6 @@
         </div>
       <% } %>
     </div>
+    <script src="/javascript/foodlib.js"></script>
   </body>
 </html>

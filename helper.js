@@ -2,6 +2,7 @@ import { on } from "events";
 import * as sqldata from "./DBManager.js";
 import { get } from "http";
 import { type } from "os";
+import exp from "constants";
 
 export var backcode = 420;
 
@@ -27,7 +28,7 @@ function correctdate(obj){
     return obj;
 }
 
-export async function addfood(obj){
+export async function  addfood(obj){
     // let name = obj.Name;
     // if(name===null || name===''){
     //     backcode = 1001;
@@ -46,8 +47,36 @@ export async function addfood(obj){
     //     console.log("going back to app js");
     // }
 
-    await sqldata.addfood(obj);
+    let difficultyLevels = ["EASY","BEGINNER","NOVICE","NORMAL","INTERMEDIATE","ROOKIE","PRO","ADVANCED","MASTER","LEGENDARY","GOD"]
 
+    obj.Difficulty = difficultyLevels[obj.Difficulty];
+
+    console.log(obj);
+
+
+    let n = await sqldata.addfood(obj);
+    if(obj.Linkval === ''){
+        // no links are attached
+    }else{
+        let obl = {
+            linkid : n,
+            linktype : "F",
+            linkname : "",
+            linkval : ""
+        }
+
+        if(Array.isArray(obj.Linkval)){
+            for(var i=0;i<obj.Linkval.length;i++){
+                obl.linkname = obj.Linkname[i];
+                obl.linkval = obj.Linkval[i];
+                await sqldata.addlink(obl);
+            }
+        }else{            
+            obl.linkname = obj.Linkname;
+            obl.linkval = obj.Linkval;
+            await sqldata.addlink(obl);
+        }
+    }
 }
 
 
@@ -113,3 +142,64 @@ export async function meal_filters(fils,pastData){
     pastData[0] = newdata.map(ele => Object.values(ele)[0]);
     return pastData;
 }
+
+export async function set_future(obj){
+    let today = new Date();
+    if(obj.date === ""){
+        obj.date = today;
+    }
+    let t = obj.date;
+    obj.date = t.getFullYear()+"-"+t.getMonth()+"-"+t.getDay()+" "+t.getHours()+":"+t.getMinutes()+":"+t.getSeconds();
+    let i = await sqldata.get_id_by_name(obj.food);
+    let obx = {
+        date : obj.date,
+        meal : obj.meal,
+        priority : obj.priority,
+        id : i
+    }
+    await sqldata.set_future(obx);
+}
+
+export async function getfooddata(s){
+    let foodsdata = await sqldata.getfoodsall(s);
+    foodsdata = foodsdata[0];
+    let outdata = {
+        name: foodsdata.name,
+        id: foodsdata.id,
+        type: foodsdata.type,
+        taste: foodsdata.taste,
+        ratings: foodsdata.ratings,
+        comments: foodsdata.ratings,
+        process: foodsdata.process,
+        reps: foodsdata.reps,
+        preptime: foodsdata.preptime,
+        difficulty: foodsdata.difficulty,
+        img : foodsdata.image,
+        linkval : [] ,
+        linkname : []
+    }
+    let linkdata = await sqldata.get_links(foodsdata.id,"F");
+    if(linkdata.length != 0){
+        for(var i=0;i<linkdata.length;i++){
+            outdata.linkval.push(linkdata[i].linkdata);
+            outdata.linkname.push(linkdata[i].linkname);
+        }
+    }
+    return outdata;
+}
+
+export async function getIngAll(s){
+    let ingData = await sqldata.getIngData(s);
+    let outdata = { ingid: ingData.ingid, ingredient: ingData.ingredient, type: ingData.type, cost: ingData.cost ,
+            linkval : [] , linkname : []
+        }
+    let linkdata = await sqldata.get_links(ingData.ingid,"I");
+    if(linkdata.length != 0){
+        for(var i=0;i<linkdata.length;i++){
+            outdata.linkval.push(linkdata[i].linkdata);
+            outdata.linkname.push(linkdata[i].linkname);
+        }
+    }
+    return outdata;
+}
+

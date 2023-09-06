@@ -3,108 +3,184 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/root.css" />
+    <link rel="stylesheet" href="/stylesheets/addFood.css" />
     <title>ADD FOOD</title>
   </head>
   <body>
     <form action="/add/food" method="post">
-      <p class="label-q">Name :</p>
-      <input name="Name" class="input-f" id="input-name" type="text" />
-      <p class="warn">Name must not be empty</p>
+      <div class="mega-container">
+        <div class="grid-ele a-addfood">
+          <span>
+            <h1 class="t-heading">ADD FOOD</h1>
+          </span>
+        </div>
 
-      <p class="label-q">Taste :</p>
-      <select name="Taste" id="input-Taste">
-        <option value="1">Spicy</option>
-        <option value="2">Sweet</option>
-        <option value="3">Sour</option>
-        <option value="4">bitter</option>
-      </select>
+        <div class="grid-ele a-name">
+          <p class="label-q">Name :</p>
+          <input name="Name" class="input-f" id="input-name" type="text" />
+          <p class="label-q-directions">Name must not be empty</p>
+        </div>
 
-      <p class="label-q">Type :</p>
+        <div class="grid-ele a-process">process</div>
 
-      <input type="radio" name="Type" value="breakfast" />
-      <label for="breakfast">breakfast</label>
+        <div class="grid-ele a-options">
+          <p class="label-q">Taste :</p>
+          <select name="Taste" id="input-Taste">
+            <option value="1">Spicy</option>
+            <option value="2">Sweet</option>
+            <option value="3">Sour</option>
+            <option value="4">bitter</option>
+          </select>
 
-      <input type="radio" name="Type" value="beverages" />
-      <label for="beverages">beverages</label>
+          <p class="label-q">Type :</p>
 
-      <input type="radio" name="Type" value="drinks" />
-      <label for="drinks">drinks</label>
+          <input type="radio" name="Type" value="breakfast" />
+          <label for="breakfast">breakfast</label>
 
-      <input type="radio" name="Type" value="south-indian" />
-      <label for="south-indian">south-indian</label>
+          <input type="radio" name="Type" value="beverages" />
+          <label for="beverages">beverages</label>
 
-      <input type="radio" name="Type" value="chinnese" />
-      <label for="chinnese">chinnese</label>
+          <input type="radio" name="Type" value="drinks" />
+          <label for="drinks">drinks</label>
 
-      <input type="radio" name="Type" value="maincourse" />
-      <label for="maincourse">maincourse</label>
+          <input type="radio" name="Type" value="south-indian" />
+          <label for="south-indian">south-indian</label>
 
-      <p class="label-q">Ratings :</p>
-      <input
-        name="Ratings"
-        class="input-f"
-        id="input-ratings"
-        type="range"
-        min="0"
-        max="10"
-      />
+          <input type="radio" name="Type" value="chinnese" />
+          <label for="chinnese">chinnese</label>
 
-      <p class="label-q">Comments :</p>
-      <input name="Comments" class="input-f" id="input-comments" type="text" />
+          <input type="radio" name="Type" value="maincourse" />
+          <label for="maincourse">maincourse</label>
+        </div>
 
-      <p class="label-q">Prep time :</p>
-      <input
-        name="preptime_hours"
-        class="input-f"
-        id="input-preptime-hours"
-        type="number"
-      />
-      <label for="preptime_hours">HRS</label>
-      <input
-        name="preptime_minutes"
-        class="input-f"
-        id="input-preptime-minutes"
-        type="number"
-      />
-      <label for="preptime_minutes">MIN</label>
+        <div class="grid-ele a-ratings">
+          <p class="label-q label-q-ratings">Ratings :</p>
+          <div class="range-containers">
+            <div class="ratings-small-val range-vals">0</div>
+            <input
+              name="Ratings"
+              class="input-f input-range"
+              id="input-ratings"
+              type="range"
+              onchange="rangeslide(this.value)"
+              min="0"
+              max="10"
+              value="10"
+            />
+            <div class="ratings-large-val range-vals">10</div>
+          </div>
+          <div class="ratings-slider-val">10</div>
+        </div>
 
-      <p class="label-q">Difficulty :</p>
-      <input
-        name="Difficulty"
-        class="input-f"
-        id="input-difficulty"
-        type="RANGE"
-        min="0"
-        max="3"
-      />
+        <div class="grid-ele a-image">
+          <label
+            for="input-image"
+            id="image-drop-area"
+            class="image-container-full"
+          >
+            <input
+              type="file"
+              accept="image/*"
+              name="image"
+              id="input-image"
+              hidden
+            />
+            <div id="image-view">
+              <img src="" alt="" class="the-image" />
+              <span class="image-desc-ask">UPLOAD IMAGES</span>
+            </div>
+          </label>
+        </div>
 
-      <!-- <p class="label-q">Process :</p>
-      <input name="Name" class="input-f" id="input-name" type="text" /> -->
-
-      <p class="label-q">Links :</p>
-      <button type="button" id="addlink">LINK</button>
-      <div class="link-container">
-        <div class="linkele">
+        <div class="grid-ele a-comments">
+          <p class="label-q label-comments">Comments :</p>
           <input
-            name="Linkname"
-            class="input-f-linkname"
-            id="input-linkname"
+            name="Comments"
+            class="input-f input-comments"
+            id="input-comments"
             type="text"
           />
-          <input
-            name="Linkval"
-            class="input-f-linkval"
-            id="input-linkval"
-            type="url"
-          />
+        </div>
+
+        <div class="grid-ele a-time">
+          <p class="label-q">Prep time :</p>
+          <div class="time-containers">
+            <input
+              name="preptime_hours"
+              class="input-f input-time"
+              id="input-preptime-hours"
+              type="number"
+              min="0"
+              max="12"
+              required
+            />
+            <label for="preptime_hours" class="label-q-time">HRS</label>
+          </div>
+          <div class="time-containers">
+            <input
+              name="preptime_minutes"
+              class="input-f input-time"
+              id="input-preptime-minutes"
+              type="number"
+              min="0"
+              max="59"
+              required
+            />
+            <label for="preptime_minutes" class="label-q-time">MIN</label>
+          </div>
+        </div>
+
+        <div class="grid-ele a-difficulty">
+          <p class="label-q label-q-difficulty">Difficulty :</p>
+          <div class="diff-range-container">
+            <input
+              name="Difficulty"
+              class="input-f input-range"
+              id="input-difficulty"
+              type="RANGE"
+              onchange="diffslide(this.value)"
+              min="0"
+              max="10"
+            />
+          </div>
+          <div class="difficulty-range-value"></div>
+        </div>
+
+        <!-- <p class="label-q">Process :</p>
+          <input name="Name" class="input-f" id="input-name" type="text" /> -->
+
+        <div class="grid-ele a-links">
+          <p class="label-q">Links :</p>
+          <button type="button" id="addlink">LINK</button>
+          <div class="link-container">
+            <div class="linkele">
+              <input
+                name="Linkname"
+                class="input-f-linkname"
+                id="input-linkname"
+                type="text"
+              />
+              <input
+                name="Linkval"
+                class="input-f-linkval"
+                id="input-linkval"
+                type="url"
+              />
+            </div>
+          </div>
+          <div class="the-buttons">
+            <button type="submit">Submit</button>
+            <button
+              id="Backbutton"
+              type="button"
+              onclick="window.location.href='/FoodApp'"
+            >
+              BACK
+            </button>
+          </div>
         </div>
       </div>
-
-      <button type="submit">Submit</button>
-    </form>
-
-    <form action="/FoodApp" method="get">
-      <button id="Backbutton">BACK</button>
     </form>
 
     <script src="/javascript/addFood.js"></script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.name %></title>
+</head>
+<body>
+
+
+    <form action="/lib/food" method="get">
+        <button id="back-button" type="submit">Back</button>
+    </form>
+
+    <form action="/food/edit" method="post">
+        
+        
+        <p class="he">Name : </p>
+        <input class="info" name="name" type="text" value="<%=data.name%>">
+        
+        <p class="he">Type : </p>
+        <input class="info" name="type" type="text" value="<%=data.type%>">
+        
+        <p class="he">Taste : </p>
+        <input class="info" name="taste" type="text" value="<%=data.taste%>">
+        
+        <p class="he">Comments : </p>
+        <input class="info" name="comments"  type="text" value="<%=data.comments%>">
+        
+        <p class="he">ratings : </p>
+        <input class="info" name="ratings" type="number" value="<%=data.ratings%>">
+        
+        <p class="he">reps : </p>
+        <input class="info" name="reps" type="number" value="<%=data.reps%>">
+        
+        <p class="he">preptime : </p>
+        <input class="info" name="preptime" type="text" value="<%=data.preptime%>">
+        
+        <p class="he">Difficulty : </p>
+        <input class="info" name="difficulty" type="number" value="<%=data.difficulty%> ">
+
+        <div class="links-container">
+            <% for(var i=0;i<data.linkval.length;i++) { %>
+                <div class="link-ele">
+                    <p class="link-index link-sub-ele "><%=i+1%></p>
+                    <input class="link-name link-sub-ele " type="text" value="<%=data.linkname[i]%>" name="linkname">
+                    <input value="<%= data.linkval[i] %>" type="url" class="link-val link-sub-ele " name="linkval">
+                </div>
+                <%}%>
+
+                
+        </div>
+        
+        <button id="save-button" type="submit">Save</button>
+        
+    </form>
+    </body>
+    </html>

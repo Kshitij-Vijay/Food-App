@@ -1,0 +1,8 @@
+must do the edit page for both food and ingredients
+
+except that almost everything is done 
+
+remaining : 
+sql profiles
+settings
+css

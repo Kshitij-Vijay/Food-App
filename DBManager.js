@@ -1,5 +1,6 @@
 import mysql from 'mysql2';
 import * as datafuncs from "./datafuncs.js";
+import express from 'express';
 
 const pool = mysql.createPool({
     host : "localhost",
@@ -15,7 +16,7 @@ let query;
 // connection is set 
 
 export async function getfutureschedule(){
-    query = "select future.date,future.meal,foods.name from future inner join foods on foods.id = future.id;";
+    query = "select future.date,future.meal,foods.name from future inner join foods on foods.id = future.id order by future.date;";
     let data = await pool.query(query);
     return data[0];
 }
@@ -29,8 +30,11 @@ export async function repeated_food_names(n){
 export async function addfood(obj){
     let q = "insert into foods(name,type,taste,ratings,comments,preptime,difficulty) values('";
     q = q + obj.Name + "','" + obj.Type + "','" + "'," + obj.Ratings + ",'" + obj.Comments;
-    q = q + "','" + obj.preptime_hours + ":" + obj.preptime_minutes + "'," + obj.Difficulty + ");";
+    q = q + "','" + obj.preptime_hours + ":" + obj.preptime_minutes + "','" + obj.Difficulty + "');";
     await pool.query(q);
+    let q2 = " SELECT id FROM foods ORDER BY id DESC LIMIT 1;";
+    let data = await pool.query(q2);
+    return (data[0])[0].id;
 }
 
 export async function addingredient(obj){
@@ -100,7 +104,43 @@ export async function filteredmeals(ty,ta){
     return data[0];
 }
 
-//await filteredmeals([ 'Chinnese', 'Energy Drink' ],['Mind Blowing']);
+export async function get_id_by_name(s){
+    let q = "select id from foods where name = '"+s+"';";
+    let data = await pool.query(q);
+    return (data[0])[0].id;
+}
+
+export async function set_future(obj){
+    let q = "insert into future values('"+obj.date+"','"+obj.meal+"',"+obj.priority+","+obj.id+");";
+    await pool.query(q);
+}
+
+export async function getfoodsall(s){
+    let q = "select * from foods where name = '"+s+"';";
+    let data = await pool.query(q);
+    return data[0];
+}
 
 
+export async function addlink(obj){
+    let q = "insert into links values('"+obj.linkid+"','"+obj.linktype+"','"+obj.linkname+"','"+obj.linkval+"');";
+    await pool.query(q);
+}
 
+export async function getIngData(s){
+    let q = "select * from ingredients where ingredient = '"+s+"';";
+    let data = await pool.query(q);
+    return data[0][0];
+}
+
+export async function get_id_by_ingname(s){
+    let q = "select ingid from ingredients where ingredient = '"+s+"';";
+    let data = await pool.query(q);
+    return (data[0])[0].ingid;
+}
+
+export async function get_links(s,v){
+    let q = "select * from links where linkid = "+s+" and linktype = '"+v+"';";
+    let data = await pool.query(q);
+    return data[0];
+}

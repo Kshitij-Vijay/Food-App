@@ -9,7 +9,7 @@
     <form action="/set/meal" method="post">
       <h1>SET YOUR MEALS</h1>
       <p class="ques">Choose the date and time</p>
-      <input type="datetime" name="date" id="set-i-date" />
+      <input type="datetime-local" name="date" id="set-i-date"/>
 
       <p class="ques">Choose meal time :</p>
       <input type="radio" value="breakfast" name="meal" />
@@ -23,6 +23,9 @@
 
       <input type="radio" value="dinner" name="meal" />
       <label for="dinner">DINNER</label>
+
+      <p>Choose priority : </p>
+      <input type="range" name="priority" id="set-i-priority" min="0" max="5" value="1">
 
       <div class="food-container">
 
@@ -78,7 +81,7 @@
     </form>
 
 
-    <script>
+    <script src="/javascript/setmeal.js">
 
     </script>
   </body>

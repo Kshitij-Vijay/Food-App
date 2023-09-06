@@ -1,0 +1,26 @@
+:root{
+    /* colors  */
+    --white-purple : #dbbeec;
+    --dark-navy-blue : #3a58b9;
+    --bright-pink : #df3e89;
+    --standered-red : #ff0000;
+
+    /* fonts  */
+    --code-spaced-font : 'Roboto Mono', monospace;
+    --special-bordered-font : 'Rubik Iso', cursive;
+    --standered-thin-curvature-font : 'Montserrat', sans-serif;
+    --standered-thin-spaced-font: 'Roboto', sans-serif;
+    --thin-spaced-bold-font: 'Oswald', sans-serif;
+    --modern-bold-font :'Kanit', sans-serif;
+    --special-thin-curves-font : 'Josefin Sans', sans-serif;
+    --extra-thin-condensed-font : 'Teko', sans-serif;
+    --bold-robotic-font : 'Bebas Neue', sans-serif;
+    --dancing-cursive-font : 'Dancing Script', cursive;
+    --pacific-cursive-font : 'Pacifico', cursive;
+    --standered-cursive-font : 'Lobster', cursive;
+
+    /* font size  */
+    --largest-headings : 6.6rem;
+    --normal-headings : 2.7rem;
+    --large-directions : 1.7rem;
+}

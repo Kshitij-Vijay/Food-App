@@ -34,7 +34,7 @@
                   <span><%=  (i+1) %></span>
                 </div>
                 <div class="ing-name ing-sub-ele">
-                  <span> <a href=""><%= data[i].ingredient  %></a> </span>
+                  <span> <a href="/ing" onclick="ingclick(event)" id="<%=data[i].ingredient%>"><%= data[i].ingredient  %></a> </span>
                 </div>
                 <div class="ing-type ing-sub-ele">
                   <span> <%= data[i].type  %></span>
@@ -45,5 +45,7 @@
               </div>
         <% } %>
     </div>
+
+    <script src="/javascript/inglib.js"></script>
   </body>
 </html>

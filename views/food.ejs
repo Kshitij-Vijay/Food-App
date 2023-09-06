@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.name %></title>
+    <link rel="stylesheet" href="/stylesheets/food.css">
+</head>
+<body>
+
+
+    <form action="/lib/food" method="get">
+        <button id="back-button" type="submit">Back</button>
+    </form>
+
+    <form action="/food/edit">
+        <button id="edit-button" type="submit">EDIT</button>
+    </form>
+
+
+    <p class="he">Name : </p>
+    <p class="info"><%= data.name %></p>
+
+    <p class="he">Type : </p>
+    <p class="info"><%= data.type %></p>
+
+    <p class="he">Taste : </p>
+    <p class="info"><%= data.taste %></p>
+
+    <p class="he">Comments : </p>
+    <p class="info"><%= data.comments %></p>
+
+    <p class="he">ratings : </p>
+    <p class="info"><%= data.ratings %></p>
+
+    <p class="he">reps : </p>
+    <p class="info"><%= data.reps %></p>
+
+    <p class="he">preptime : </p>
+    <p class="info"><%= data.preptime %></p>
+
+    <p class="he">Difficulty : </p>
+    <p class="info"><%= data.difficulty %></p>
+
+    <p class="he">Image : </p>
+    <img src="<%=data.img%>" alt="No Image">
+
+    <p class="he">LINKS : </p>
+
+    <div class="links-container">
+        <% for(var i=0;i<data.linkval.length;i++) { %>
+            <div class="link-ele">
+                <p class="link-index link-sub-ele "><%=i+1%></p>
+                <p class="link-name link-sub-ele "><%= data.linkname[i] %></p>
+                <a href="<%= data.linkval[i] %>" class="link-val link-sub-ele "><%= data.linkval[i] %></a>
+            </div>
+            <%}%>
+    </div>
+</body>
+</html>
