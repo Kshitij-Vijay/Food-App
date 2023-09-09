@@ -121,6 +121,11 @@ export async function getfoodsall(s){
     return data[0];
 }
 
+export async function addlink_without_id(obj){
+    let q = "insert into links(linktype,linkname,linkdata) values ('"+obj.type+"','"+obj.linkname+"','"+obj.linkdata+"');";
+    await pool.query(q);
+}
+
 
 export async function addlink(obj){
     let q = "insert into links values('"+obj.linkid+"','"+obj.linktype+"','"+obj.linkname+"','"+obj.linkval+"');";

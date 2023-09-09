@@ -82,6 +82,26 @@ export async function  addfood(obj){
 
 export async function addIngredient(obj){
     await sqldata.addingredient(obj);
+    if(obj.linkval != ''){
+        if(Array.isArray(obj.linkval)){
+            var i = 0;
+            for(;i<obj.linkval.length;i++){
+                let obl = {
+                    type : "I",
+                    linkname : obj.Linkname[i],
+                    linkdata : obj.Linkval[i]
+                }
+                await sqldata.addlink_without_id(obl);
+            }
+        }else{
+            let obl = {
+                type : "I",
+                linkname : obj.Linkname,
+                linkdata : obj.Linkval
+            }
+            await sqldata.addlink_without_id(obl);
+        }
+    }
 }
 
 export async function foodlibdata(){

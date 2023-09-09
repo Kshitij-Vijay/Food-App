@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/root.css" />
+    <link rel="stylesheet" href="/stylesheets/addingredients.css" />
     <title>ADD INGREDIENT</title>
   </head>
   <body>
@@ -11,7 +13,7 @@
       <input name="Name" class="input-i" id="input-name" type="text" />
       <p class="warn">Name must not be empty</p>
 
-      <p class="label-q">Cost :</p>
+      <p class="label-q">TYPE :</p>
 
       <input
         name="Type"
@@ -70,11 +72,33 @@
       <p class="label-q">Cost :</p>
       <input name="Cost" class="input-i" id="input-cost" type="number" />
 
-      <button type="submit">Submit</button>
-    </form>
+      <p class="label-q">Links :</p>
+          <button type="button" id="addlink">LINK</button>
+          <div class="link-container">
+            <div class="linkele">
+              <input
+                name="Linkname"
+                class="input-f-linkname"
+                id="input-linkname"
+                type="text"
+              />
+              <input
+                name="Linkval"
+                class="input-f-linkval"
+                id="input-linkval"
+                type="url"
+              />
+            </div>
 
-    <form action="/FoodApp" method="get">
-      <button id="Backbutton">BACK</button>
+      <button type="submit">Submit</button>
+
+      <button
+        id="Backbutton"
+        type="button"
+        onclick="window.location.href='/FoodApp'"
+      >
+        BACK
+      </button>
     </form>
 
     <script src="/javascript/addFood.js"></script>
